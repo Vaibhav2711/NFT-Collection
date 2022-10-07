@@ -128,7 +128,7 @@ export default function Home() {
     try{
       const signer = await getProviderorSigner(true);
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS,abi,signer);
-      const tx = await nftContract.publicMint({value: utils.parseEther("0.01")});
+      const tx = await nftContract.mint({value: utils.parseEther("0.01")});
       setLoading(true);
       await tx.wait();
       setLoading(false);
@@ -162,7 +162,7 @@ export default function Home() {
       }
       getTokenIdsMinted();
 
-      const presaleInterval = setInterval(async function () {
+      const presaleEndedInterval = setInterval(async function () {
         const _presaleStarted = await checkIfPresaleStarted();
         if (_presaleStarted) {
           const _presaleEnded = await checkIfPresaleEnded();
