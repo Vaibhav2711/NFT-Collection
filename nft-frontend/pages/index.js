@@ -74,18 +74,20 @@ export default function Home() {
     try{
       const provider = await getProviderorSigner();
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS,abi,provider);
-      const _presaleEnded = nftContract.presaleEnded();
+      const _presaleEnded = await nftContract.presaleEnded();
+      //console.log(_presaleEnded);
       // _presaleEnded is a Big Number, so we are using the lt(less than function) instead of `<`
       // Date.now()/1000 returns the current time in seconds
       // We compare if the _presaleEnded timestamp is less than the current time
       // which means presale has ended
-      const hasEnded = _presaleEnded.lt(Math.floor(Date.now() / 1000));
+      const hasEnded = _presaleEnded < (Math.floor(Date.now() / 1000));
       if (hasEnded) {
         setPresaleEnded(true);
       } 
       else {
         setPresaleEnded(false);
       }
+      //console.log(hasEnded);
       return hasEnded;
     } catch (err) {
       console.error(err);
