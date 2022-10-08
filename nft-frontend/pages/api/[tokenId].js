@@ -13,5 +13,6 @@ export default function handler(req, res) {
       name: "Crypto Minion #" + tokenId,
       description: "Crypto Dev is a collection of developers in crypto",
       image: image_url + tokenId + ".png",
+      external_link:  image_url + tokenId + ".png",
     });
   }
