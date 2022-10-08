@@ -4,7 +4,7 @@ export default function handler(req, res) {
     console.log(tokenId);
     // As all the images are uploaded on github, we can extract the images from github directly.
     const image_url =
-      "https://github.com/Vaibhav2711/NFT-Collection/blob/main/minions/";
+      "https://raw.githubusercontent.com/Vaibhav2711/NFT-Collection/main/minions/";
     // The api is sending back metadata for a Crypto Dev
     // To make our collection compatible with Opensea, we need to follow some Metadata standards
     // when sending back the response from the api
