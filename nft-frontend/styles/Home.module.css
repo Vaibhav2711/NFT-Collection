@@ -11,6 +11,8 @@
   justify-content: center;
   align-items: center;
   font-family: 'Courier New', Courier, monospace;
+  background-color: lightblue;
+  color: black;
 }
 
 .title{
@@ -25,9 +27,9 @@
 }
 
 .image{
-  width: 90%;
+  width: 120%;
   height: 70%;
-  margin-left: 50%;
+  margin-left: 20%;
 }
 
 .footer {
@@ -37,7 +39,10 @@
   border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  background-color: rgb(28, 133, 225);
+  color: black;
 }
+
 
 .button{
   width: 200px;
@@ -47,6 +52,8 @@
   border: none;
   border-radius: 5px;
   margin-left: 80;
+  background-color: rgb(238, 221, 30);
+  color: black;
 }
 
 .logo {

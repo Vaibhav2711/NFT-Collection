@@ -15,7 +15,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
     //Pause the contract in case of emergency
     bool public _paused; 
     // max number of NFTs to be minted         
-    uint256 public maxTokenIds = 20;       
+    uint256 public maxTokenIds = 10;       
     // total number of tokenids minted  
     uint public tokenIds;
     // Whitelist contract instance 
@@ -29,7 +29,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
         _;
     }
 
-    constructor (string memory baseURI, address whitelistContract) ERC721("Crypto Devs","CD"){
+    constructor (string memory baseURI, address whitelistContract) ERC721("Crypto Minions","CM"){
         _baseTokenURI = baseURI;
         whitelist = IWhitelist(whitelistContract);
     }
@@ -46,7 +46,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
 
         require(presaleStarted && block.timestamp < presaleEnded, "Presale is not running"); 
         require(whitelist.whitelistedAddress(msg.sender), "You are not whitelisted");
-        require(tokenIds <maxTokenIds, "Exceeded maximum Crypto Devs supply");
+        require(tokenIds <maxTokenIds, "Exceeded maximum Crypto Minions supply");
         require(msg.value >= _price, "Ether sent is not correct");
         tokenIds += 1;
         // _safeMint is a safer version of _mint
@@ -57,7 +57,7 @@ contract CryptoDevs is ERC721Enumerable, Ownable {
     
     function mint() public payable onlyWhenNotPaused {
         require(presaleStarted && block.timestamp >= presaleEnded, "Presale is still running");
-        require(tokenIds <maxTokenIds, "Exceeded maximum Crypto Devs supply");
+        require(tokenIds <maxTokenIds, "Exceeded maximum Crypto Minions supply");
         require(msg.value >= _price, "Ether sent is not correct");
         tokenIds += 1;
         _safeMint(msg.sender,tokenIds);
